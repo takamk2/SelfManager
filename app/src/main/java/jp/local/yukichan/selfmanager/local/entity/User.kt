@@ -1,4 +1,4 @@
-package jp.local.yukichan.selfmanager.room.entity
+package jp.local.yukichan.selfmanager.local.entity
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey

@@ -1,7 +1,7 @@
 package jp.local.yukichan.selfmanager.extensions
 
 import android.content.Context
-import jp.local.yukichan.selfmanager.CustomApplication
+import jp.local.yukichan.selfmanager.application.CustomApplication
 
 /**
  * Created by takamk2 on 18/03/01.

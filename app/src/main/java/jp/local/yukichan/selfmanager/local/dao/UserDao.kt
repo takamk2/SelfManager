@@ -1,7 +1,7 @@
-package jp.local.yukichan.selfmanager.room.dao
+package jp.local.yukichan.selfmanager.local.dao
 
 import android.arch.persistence.room.*
-import jp.local.yukichan.selfmanager.room.entity.User
+import jp.local.yukichan.selfmanager.local.entity.User
 
 /**
  * Created by takamk2 on 18/02/28.

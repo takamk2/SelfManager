@@ -1,15 +1,15 @@
 package jp.local.yukichan.selfmanager.samples
 
+import jp.local.yukichan.selfmanager.data.RandomUser
 import retrofit2.Call
 import retrofit2.http.GET
 
-/**
- * Created by takamk2 on 18/03/02.
- *
- * The Edit Fragment of Base Class.
- */
 interface RandomUserApiService {
 
+    companion object {
+        const val endPoint = "http://randomuser.me/"
+    }
+
     @GET("api")
-    fun getUser(): Call<RandomUserDemo>
+    fun getUser(): Call<RandomUser>
 }
