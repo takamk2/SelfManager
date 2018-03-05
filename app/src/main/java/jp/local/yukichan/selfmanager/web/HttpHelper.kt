@@ -18,7 +18,9 @@ object HttpHelper {
                 .addInterceptor({ chain ->
                     val original = chain.request()
                     val request = original.newBuilder()
-                            .header("Accept", "jp.local.yukichan.selfmanager.application.json")
+                            .header("Accept", "application/json")
+                            .header("Content-Type", "application/json")
+                            .header("Client-OS", "Android")
                             .method(original.method(), original.body())
                             .build()
                     return@addInterceptor chain.proceed(request)
