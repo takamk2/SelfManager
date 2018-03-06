@@ -2,7 +2,11 @@ package jp.local.yukichan.selfmanager.application
 
 import android.app.Application
 import android.arch.persistence.room.Room
+import android.location.LocationManager
 import com.google.gson.GsonBuilder
+import jp.local.yukichan.selfmanager.di.ApplicationComponent
+import jp.local.yukichan.selfmanager.di.ApplicationModule
+import jp.local.yukichan.selfmanager.di.DaggerApplicationComponent
 import jp.local.yukichan.selfmanager.local.database.AppDatabase
 import jp.local.yukichan.selfmanager.local.database.AppDatabase.Companion.DB_NAME
 import jp.local.yukichan.selfmanager.web.service.RandomUserApiService
@@ -12,6 +16,7 @@ import jp.local.yukichan.selfmanager.web.service.TalkApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * Created by takamk2 on 18/03/01.
@@ -20,14 +25,26 @@ import timber.log.Timber
  */
 class CustomApplication : Application() {
 
+    companion object {
+        @JvmStatic
+        lateinit var applicationComponent: ApplicationComponent
+    }
+
     lateinit var db: AppDatabase
     lateinit var randomUserApiService: RandomUserApiService
     lateinit var talkApiService: TalkApiService
     lateinit var gitHubService: GitHubService
 
+    @Inject
+    lateinit var locationManager: LocationManager
+
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+
+        applicationComponent = DaggerApplicationComponent.builder()
+                .applicationModule(ApplicationModule(this))
+                .build().also { it.inject(this) }
 
         // DEBUG
         deleteDatabase(AppDatabase.DB_NAME)

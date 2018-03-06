@@ -39,13 +39,18 @@ dependencies {
     })
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
+    // Dagger2
+    implementation "com.google.dagger:dagger:2.12"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.12"
+    kapt "com.google.dagger:dagger-compiler:2.12"
+
     // RxBinding
-    compile 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
-    compile 'com.jakewharton.rxbinding2:rxbinding-support-v4:2.1.1'
-    compile 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.1.1'
-    compile 'com.jakewharton.rxbinding2:rxbinding-design:2.1.1'
-    compile 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.1.1'
-    compile 'com.jakewharton.rxbinding2:rxbinding-leanback-v17:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-support-v4:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-design:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-leanback-v17:2.1.1'
 
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"

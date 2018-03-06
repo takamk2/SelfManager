@@ -3,6 +3,7 @@ package jp.local.yukichan.selfmanager.activities
 import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.location.LocationManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -15,7 +16,9 @@ import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 import java.util.concurrent.TimeUnit
 import android.speech.tts.UtteranceProgressListener
+import jp.local.yukichan.selfmanager.application.CustomApplication
 import timber.log.Timber
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,10 +26,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var tts: TextToSpeech
 
+    @Inject
+    lateinit var locationManager: LocationManager
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        CustomApplication.applicationComponent.inject(this)
+
+        Toast.makeText(this, "locationManager=$locationManager", Toast.LENGTH_SHORT).show()
 
         viewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
 
