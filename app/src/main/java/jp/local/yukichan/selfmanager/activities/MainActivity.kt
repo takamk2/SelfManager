@@ -16,7 +16,7 @@ import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 import java.util.concurrent.TimeUnit
 import android.speech.tts.UtteranceProgressListener
-import jp.local.yukichan.selfmanager.application.CustomApplication
+import jp.local.yukichan.selfmanager.extensions.app
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        CustomApplication.applicationComponent.inject(this)
+        app().graph.inject(this)
 
         Toast.makeText(this, "locationManager=$locationManager", Toast.LENGTH_SHORT).show()
 

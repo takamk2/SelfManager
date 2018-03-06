@@ -25,10 +25,7 @@ import javax.inject.Inject
  */
 class CustomApplication : Application() {
 
-    companion object {
-        @JvmStatic
-        lateinit var applicationComponent: ApplicationComponent
-    }
+    lateinit var graph: ApplicationComponent
 
     lateinit var db: AppDatabase
     lateinit var randomUserApiService: RandomUserApiService
@@ -42,7 +39,7 @@ class CustomApplication : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
 
-        applicationComponent = DaggerApplicationComponent.builder()
+        graph = DaggerApplicationComponent.builder()
                 .applicationModule(ApplicationModule(this))
                 .build().also { it.inject(this) }
 
